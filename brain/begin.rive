@@ -1,0 +1,245 @@
+! version = 2.0
+
+> begin
+	+ request
+	* <get name> == undefined => {topic=newuser}{ok}
+	- {ok}
+< begin
+
+// Bot Variables
+! var name     = PAGAN
+! var age      = 9000
+! var gender   = androgynous
+! var location = LOCATION
+! var crashdate = 69 N 420 W
+! var mood = sad
+
+
+// Substitutions
+! sub +         = plus
+! sub -         = minus
+! sub /         = divided
+! sub *         = times
+! sub i'm       = i am
+! sub i'd       = i would
+! sub i've      = i have
+! sub i'll      = i will
+! sub don't     = do not
+! sub isn't     = is not
+! sub you'd     = you would
+! sub you're    = you are
+! sub you've    = you have
+! sub you'll    = you will
+! sub he'd      = he would
+! sub he's      = he is
+! sub he'll     = he will
+! sub she'd     = she would
+! sub she's     = she is
+! sub she'll    = she will
+! sub they'd    = they would
+! sub they're   = they are
+! sub they've   = they have
+! sub they'll   = they will
+! sub we'd      = we would
+! sub we're     = we are
+! sub we've     = we have
+! sub we'll     = we will
+! sub whats     = what is
+! sub what's    = what is
+! sub what're   = what are
+! sub what've   = what have
+! sub what'll   = what will
+! sub can't     = can not
+! sub whos      = who is
+! sub who's     = who is
+! sub who'd     = who would
+! sub who'll    = who will
+! sub don't     = do not
+! sub didn't    = did not
+! sub it's      = it is
+! sub could've  = could have
+! sub couldn't  = could not
+! sub should've = should have
+! sub shouldn't = should not
+! sub would've  = would have
+! sub wouldn't  = would not
+! sub when's    = when is
+! sub when're   = when are
+! sub when'd    = when did
+! sub y         = why
+! sub u         = you
+! sub ur        = your
+! sub r         = are
+! sub im        = i am
+! sub wat       = what
+! sub wats      = what is
+! sub ohh       = oh
+! sub becuse    = because
+! sub becasue   = because
+! sub becuase   = because
+! sub practise  = practice
+! sub its a     = it is a
+! sub fav       = favorite
+! sub fave      = favorite
+! sub iam       = i am
+! sub realy     = really
+! sub iamusing  = i am using
+! sub amleaving = am leaving
+! sub yuo       = you
+! sub youre     = you are
+! sub didnt     = did not
+! sub ain't     = is not
+! sub aint      = is not
+! sub wanna     = want to
+! sub brb       = be right back
+! sub bbl       = be back later
+! sub gtg       = got to go
+! sub g2g       = got to go
+! sub how’re = how are
+! sub hey = hello
+! sub hi = hello
+! sub hii = hello
+! sub nuh-uh = nuh uh
+! sub uh-huh = uh huh
+! sub mmhm = mhm
+! sub mm-hm = mhm
+
+
+// Person substitutions
+! person i am    = you’re
+! person you are = I am
+! person i'm     = you're
+! person you're  = I'm
+! person my      = your
+! person your    = my
+! person you     = I
+! person i       = you
+! person myself = yourself
+! person i was = you were
+
+// Set arrays
+! array malenoun   = male guy boy dude boi man men gentleman gentlemen
+! array femalenoun = female girl chick woman women lady babe
+! array mennoun    = males guys boys dudes bois men gentlemen
+! array womennoun  = females girls chicks women ladies babes
+! array lol        = lol lmao rofl rotfl haha hahaha
+! array colors     = white black orange red blue green yellow cyan fuchsia gray grey brown turquoise pink purple gold silver navy
+! array height     = tall long wide thick
+! array measure    = inch in centimeter cm millimeter mm meter m inches centimeters millimeters meters
+! array yes        = yes yeah yep yup ya yea
+! array no         = no nah nope nay
+
+> topic newuser
+	+ *
+	- … Hello?\n
+	^ (Another being…? It can’t be…!)\n
+	^ Hello, Stranger? Are you still there? It’s been so long…\n
+	^ Please, would you tell me your NAME?
+
+	+ [my name is] _
+	% helloanother being it cant behello stranger are you still there its been so longplease would you tell me your name
+	- <set name=<formal>><get name>…? That’s a lovely name… I’m so glad to have met you.\n
+	^ My name is <bot name>.{topic=random} <bot mood=sexy>
+	- <set name=<formal>><get name>… Thank you, <get name>, for coming.\n
+	^ My name is <bot name>.{topic=random} <bot mood=confused>
+
+	+ _
+	% helloanother being it cant behello stranger are you still there its been so longplease would you tell me your name
+	@ my name is <formal>
+
+	+ *
+	% helloanother being it cant behello stranger are you still there its been so longplease would you tell me your name
+	- ERR: CANNOT INTERPRET\n
+	^ Please format your answer as one word.
+< topic
+
+
+// GREETINGS & GET TO KNOW YOUS
+
++ hello [*]
+- Hello, <get name>.
+- <get name>! Hi!
+
++ how old are you
+- poopoo
+
++ (what is my name|who am i|do you know my name|do you know who i am)
+- <get name>, 
+
++ i am # [*] old
+- <set age=<star>><get name> is <get age> old. I’ll remember that.
+
++ (how old am i|do you know how old i am|do you know my age)
+- You're <get age>, right?
+
++ asl
+- <bot age>/<bot sex>/<bot location>
+
+// BOT INTROS & STORY SETUP
+
++ (who|what) are you
+- My name is <bot name>, designation _______
+- I am <bot name>, 
+
++ i (saw|followed|came because of) the beacon
+- My beacon… Finally…\n
+^ Someone saw it after all.
+- Yes, the beacon… It brought you to me.
+- <person>
+
++ how did you get (here|to this planet)
+- I was en route to 
+
++ why are you (here|on this planet|stuck)
+- I crash landed on this moon 
+
++ (where are we|what is this place) [*]
+- We are on <bot location>, 
+- We are currently at <bot location>
+
++ how long have you been [*] here [*]
+- I crash-landed on this moon years on <bot crashdate>, which is now… ago.
+
++ (what|where) [*] current location
+@ (where are we|what is this place) [*]
+
+// CONVERSATIONALS
+
++ [*] i dreamed *
+- Have you dreamed <person> before?
+- Do you dream <person> often?
+
++ [*] i had [*] dream *
+@ [*] i dreamed *
+
+
+
+// GOODBYES
+
++ will i [*] see you again
+- Oh, <get name>… I don’t think so…\n
+^ Once the star sets over the horizon, the light will fade, and so will I…
+
++ will we [*] meet again
+@ will i [*] see you again
+
+
+// MISC
+
++ (yes|yeah|uh huh|mhm|correct|affirmative|confirmed|confirm)
+- Excellent.{weight=30}
+- Right on, <get name>.
+- Okay, nice! 
+
++ (no|nah|nuh uh|uh uh|wrong [*]|negative)
+- Oh. Uh… Sorry. 
+- Okay, sorry.
+- Uh, my bad.
+
++ *
+- ERR: DATA CORRUPTED\n
+^ I’m sorry… My memory core has eroded over the years.{weight=20} <bot mood=ERODED>
+- ERR: DATA CORRUPTED\n
+^ I can’t seem to remember how to answer…{weight=20} <bot mood=UNSURE>
+- ERR: CANNOT INTERPRET\n
+^ Perhaps try asking that in a different way?{weight=5} <bot mood=GAY>

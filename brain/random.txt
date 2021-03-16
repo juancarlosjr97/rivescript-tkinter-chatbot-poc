@@ -1,0 +1,103 @@
+
+// GREETINGS & GET TO KNOW YOUS
+
++ hello [*]
+- Hello, <get name>.
+- <get name>! Hi!
+
++ how old are you
+- poopoo
+
++ (what is my name|who am i|do you know my name|do you know who i am)
+- <get name>, 
+
++ i am # [*] old
+- <set age=<star>><get name> is <get age> old. I’ll remember that.
+
++ (how old am i|do you know how old i am|do you know my age)
+- You're <get age>, right?
+
++ asl
+- <bot age>/<bot sex>/<bot location>
+
+// BOT INTROS & STORY SETUP
+
++ (who|what) are you
+- My name is <bot name>, designation _______
+- I am <bot name>, 
+
++ i (saw|followed|came because of) the beacon
+- My beacon… Finally…\n
+^ Someone saw it after all.
+- Yes, the beacon… It brought you to me.
+- <person>
+
++ how did you get (here|to this planet)
+- I was en route to 
+
++ why are you (here|on this planet|stuck)
+- I crash landed on this moon 
+
++ (where are we|what is this place) [*]
+- We are on <bot location>, 
+- We are currently at <bot location>
+
++ how long have you been [*] here [*]
+- I crash-landed on this moon years on <bot crashdate>, which is now… ago.
+
++ (what|where) [*] current location
+@ (where are we|what is this place) [*]
+
+// CONVERSATIONALS
+
++ [*] i dreamed *
+- Have you dreamed <person> before?
+- Do you dream <person> often?
+
++ [*] i had [*] dream *
+@ [*] i dreamed *
+
++ 
+
+// GOODBYES
+
++ will i [*] see you again
+- Oh, <get name>… I don’t think so…\n
+^ Once the star sets over the horizon, the light will fade, and so will I…
+
++ will we [*] meet again
+@ will i [*] see you again
+
+
+// MISC
+
++ (yes|yeah|uh huh|mhm|correct|affirmative|confirmed|confirm)
+- Excellent.{weight=30}
+- Right on, <get name>.
+- Okay, nice! 
+
++ (no|nah|nuh uh|uh uh|wrong [*]|negative)
+- Oh. Uh… Sorry. 
+- Okay, sorry.
+- Uh, my bad.
+
++ *
+- ERR: DATA CORRUPTED\n
+^ I’m sorry… My memory core has eroded over the years.{weight=20}
+- ERR: DATA CORRUPTED\n
+^ I can’t seem to remember how to answer…{weight=20}
+- ERR: CANNOT INTERPRET\n
+^ Perhaps try asking that in a different way?{weight=5}
+
+
+
+
+
+
+
+
+
+
+
+
+
